@@ -1,6 +1,6 @@
 # bytebank
 
-A new Flutter project.
+My first project using Flutter to learn more about mobile development.
 
 ## Getting Started
 
