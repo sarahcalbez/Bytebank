@@ -22,6 +22,9 @@ class BytebankApp extends StatelessWidget {
 class TransferForm extends StatelessWidget {
   final _accountNumberController = TextEditingController();
   final _valueController = TextEditingController();
+  static const snackBar = SnackBar(
+    content: Text('Transfer successfully sent!'),
+  );
 
   TransferForm({Key? key}) : super(key: key);
 
@@ -70,6 +73,7 @@ class TransferForm extends StatelessWidget {
                   if (accountNumber != null && value != null) {
                     final confirmedTransfer = Transfer(value, accountNumber);
                     debugPrint('$confirmedTransfer');
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
               ),
@@ -132,3 +136,26 @@ class Transfer {
     return 'Transfer{Value: $value, Account Number: $accountNumber}';
   }
 }
+
+// class SnackBarPage extends StatelessWidget {
+//   const SnackBarPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: ElevatedButton(
+//         onPressed: () {
+//           final snackBar = SnackBar(
+//             content: const Text('Transfer successfully sent!'),
+//             action: SnackBarAction(
+//               label: 'Undo',
+//               onPressed: () {},
+//             ),
+//           );
+//           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+//         },
+//         child: const Text('Show SnackBar'),
+//       ),
+//     );
+//   }
+// }
